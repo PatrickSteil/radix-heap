@@ -331,11 +331,10 @@ public:
 };
 
 template <typename KeyType>
-using max_radix_heap =
-    radix_heap::radix_heap<KeyType, reverse_encoder<KeyType>>;
+using max_radix_heap = radix_heap<KeyType, reverse_encoder<KeyType>>;
 
 template <typename KeyType, typename ValueType>
 using pair_max_radix_heap =
-    radix_heap::pair_radix_heap<KeyType, ValueType, reverse_encoder<KeyType>>;
+    pair_radix_heap<KeyType, ValueType, reverse_encoder<KeyType>>;
 
 } // namespace radix_heap
