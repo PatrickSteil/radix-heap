@@ -318,4 +318,24 @@ private:
     buckets_min_[i] = std::numeric_limits<unsigned_key_type>::max();
   }
 };
+
+// Max Heap
+template <typename KeyType> class reverse_encoder {
+public:
+  using key_type = KeyType;
+  using unsigned_key_type = typename std::make_unsigned<key_type>::type;
+
+  static constexpr unsigned_key_type encode(key_type x) { return ~x; }
+
+  static constexpr key_type decode(unsigned_key_type x) { return ~x; }
+};
+
+template <typename KeyType>
+using max_radix_heap =
+    radix_heap::radix_heap<KeyType, reverse_encoder<KeyType>>;
+
+template <typename KeyType, typename ValueType>
+using pair_max_radix_heap =
+    radix_heap::pair_radix_heap<KeyType, ValueType, reverse_encoder<KeyType>>;
+
 } // namespace radix_heap
